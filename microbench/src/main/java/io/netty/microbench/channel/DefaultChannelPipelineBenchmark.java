@@ -78,8 +78,7 @@ public class DefaultChannelPipelineBenchmark extends AbstractMicrobenchmark {
     @Benchmark
     public void propagateEvent(Blackhole hole) {
         for (int i = 0; i < 100; i++) {
-            pipeline.fireChannelReadComplete();
-            hole.consume(i);
+            hole.consume(pipeline.fireChannelReadComplete());
         }
     }
 }

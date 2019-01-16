@@ -70,30 +70,30 @@ abstract class AbstractChannelHandlerContext extends DefaultAttributeMap
     private static final int INIT = 0;
 
     // Using to mask which methods must be called for a ChannelHandler.
-    private static int NONE;
-    private static int MASK_EXCEPTION_CAUGHT = 1;
-    private static int MASK_CHANNEL_REGISTERED = 1 << 1;
-    private static int MASK_CHANNEL_UNREGISTERED = 1 << 2;
-    private static int MASK_CHANNEL_ACTIVE = 1 << 3;
-    private static int MASK_CHANNEL_INACTIVE = 1 << 4;
-    private static int MASK_CHANNEL_READ = 1 << 5;
-    private static int MASK_CHANNEL_READ_COMPLETE = 1 << 6;
-    private static int MASK_USER_EVENT_TRIGGERED = 1 << 7;
-    private static int MASK_CHANNEL_WRITABILITY_CHANGED = 1 << 8;
-    private static int MASK_BIND = 1 << 9;
-    private static int MASK_CONNECT = 1 << 10;
-    private static int MASK_DISCONNECT = 1 << 11;
-    private static int MASK_CLOSE = 1 << 12;
-    private static int MASK_REGISTER = 1 << 13;
-    private static int MASK_DEREGISTER = 1 << 14;
-    private static int MASK_READ = 1 << 15;
-    private static int MASK_WRITE = 1 << 16;
-    private static int MASK_FLUSH = 1 << 17;
+    private static final int NONE = 0;
+    private static final int MASK_EXCEPTION_CAUGHT = 1;
+    private static final int MASK_CHANNEL_REGISTERED = 1 << 1;
+    private static final int MASK_CHANNEL_UNREGISTERED = 1 << 2;
+    private static final int MASK_CHANNEL_ACTIVE = 1 << 3;
+    private static final int MASK_CHANNEL_INACTIVE = 1 << 4;
+    private static final int MASK_CHANNEL_READ = 1 << 5;
+    private static final int MASK_CHANNEL_READ_COMPLETE = 1 << 6;
+    private static final int MASK_USER_EVENT_TRIGGERED = 1 << 7;
+    private static final int MASK_CHANNEL_WRITABILITY_CHANGED = 1 << 8;
+    private static final int MASK_BIND = 1 << 9;
+    private static final int MASK_CONNECT = 1 << 10;
+    private static final int MASK_DISCONNECT = 1 << 11;
+    private static final int MASK_CLOSE = 1 << 12;
+    private static final int MASK_REGISTER = 1 << 13;
+    private static final int MASK_DEREGISTER = 1 << 14;
+    private static final int MASK_READ = 1 << 15;
+    private static final int MASK_WRITE = 1 << 16;
+    private static final int MASK_FLUSH = 1 << 17;
 
-    private static int MASK_ALL_INBOUND = MASK_EXCEPTION_CAUGHT | MASK_CHANNEL_REGISTERED | MASK_CHANNEL_UNREGISTERED |
-            MASK_CHANNEL_ACTIVE | MASK_CHANNEL_INACTIVE | MASK_CHANNEL_READ | MASK_CHANNEL_READ_COMPLETE |
-            MASK_USER_EVENT_TRIGGERED | MASK_CHANNEL_WRITABILITY_CHANGED;
-    private static int MASK_ALL_OUTBOUND = MASK_EXCEPTION_CAUGHT | MASK_BIND | MASK_CONNECT | MASK_DISCONNECT |
+    private static final int MASK_ALL_INBOUND = MASK_EXCEPTION_CAUGHT | MASK_CHANNEL_REGISTERED |
+            MASK_CHANNEL_UNREGISTERED | MASK_CHANNEL_ACTIVE | MASK_CHANNEL_INACTIVE | MASK_CHANNEL_READ |
+            MASK_CHANNEL_READ_COMPLETE | MASK_USER_EVENT_TRIGGERED | MASK_CHANNEL_WRITABILITY_CHANGED;
+    private static final int MASK_ALL_OUTBOUND = MASK_EXCEPTION_CAUGHT | MASK_BIND | MASK_CONNECT | MASK_DISCONNECT |
             MASK_CLOSE | MASK_REGISTER | MASK_DEREGISTER | MASK_READ | MASK_WRITE | MASK_FLUSH;
 
     private static final FastThreadLocal<Map<Class<? extends ChannelHandler>, Integer>> MASKS =
