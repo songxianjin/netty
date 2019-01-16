@@ -992,16 +992,7 @@ abstract class AbstractChannelHandlerContext extends DefaultAttributeMap
     }
 
     private void write(Object msg, boolean flush, ChannelPromise promise) {
-        final AbstractChannelHandlerContext next;
-        if (flush) {
-            AbstractChannelHandlerContext ctx = this;
-            do {
-                ctx = ctx.prev;
-            } while ((ctx.executionMask & MASK_WRITE) == 0 && (ctx.executionMask & MASK_FLUSH) == 0);
-            next = ctx;
-        } else {
-            next = findContextOutbound(MASK_WRITE);
-        }
+        final AbstractChannelHandlerContext next = findContextOutbound(flush ? (MASK_WRITE | MASK_FLUSH) : MASK_WRITE);
         final Object m = pipeline.touch(msg, next);
         EventExecutor executor = next.executor();
         if (executor.inEventLoop()) {
